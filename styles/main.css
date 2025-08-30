@@ -189,3 +189,31 @@ nav .container {
     0%, 50% { border-color: white; }
     51%, 100% { border-color: transparent; }
 }
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 40px 0;
+    text-align: center;
+}
+
+.stat {
+    flex: 1;
+}
+
+.stat-number {
+    display: block;
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+.stat-label {
+    display: block;
+    margin-top: 10px;
+    color: #666;
+}
+
+[data-theme="dark"] .stat-label {
+    color: #aaa;
+}

@@ -56,3 +56,40 @@ themeToggle.querySelector('.toggle-icon').textContent = icon;
     typingText.textContent = '';
     setTimeout(typeWriter, 500); // Pequeno delay inicial
 })();
+
+// Animação de contadores
+const animateCounters = () => {
+    const counters = document.querySelectorAll('.stat-number');
+    
+    counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-target'));
+        const duration = 2000; // 2 segundos
+        const increment = target / (duration / 16); // 60 FPS
+        let current = 0;
+        
+        const updateCounter = () => {
+            current += increment;
+            if (current < target) {
+                counter.textContent = Math.floor(current);
+                requestAnimationFrame(updateCounter);
+            } else {
+                counter.textContent = target;
+            }
+        };
+        
+        updateCounter();
+    });
+};
+
+// Ativar quando a seção de projetos aparecer na tela
+const projectSection = document.querySelector('#projetos');
+const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+        animateCounters();
+        observer.disconnect(); // Animar só uma vez
+    }
+});
+
+if (projectSection) {
+    observer.observe(projectSection);
+}
