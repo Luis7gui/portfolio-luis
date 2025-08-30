@@ -31,3 +31,28 @@ themeToggle.addEventListener('click', () => {
 // No inicio do arquivo, após pegar currentTheme
 const icon = currentTheme === 'light' ?  '🌙' : '☀️';
 themeToggle.querySelector('.toggle-icon').textContent = icon;
+
+// Typing animation
+(function() {
+    const typingText = document.getElementById('typingText');
+    
+    if (!typingText) {
+        console.error('Elemento typingText não encontrado!');
+        return;
+    }
+    
+    const text = 'Luís Guilherme';
+    let index = 0;
+    
+    function typeWriter() {
+        if (index < text.length) {
+            typingText.textContent = text.substring(0, index + 1);
+            index++;
+            setTimeout(typeWriter, 100);
+        }
+    }
+    
+    // Limpar o texto inicial e começar a animação
+    typingText.textContent = '';
+    setTimeout(typeWriter, 500); // Pequeno delay inicial
+})();

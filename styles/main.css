@@ -179,3 +179,13 @@ nav .container {
 [data-theme="dark"] .nav-links a {
     color: #f5f5f5;
 }
+
+.typing-text {
+    border-right: 3px solid white;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { border-color: white; }
+    51%, 100% { border-color: transparent; }
+}
